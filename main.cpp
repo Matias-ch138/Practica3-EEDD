@@ -8,10 +8,10 @@
 #include <stdexcept>
 #include <string>
 
-#include "header/ControlParques.h"
-#include "header/Arbol.h"
-#include "header/Especie.h"
-#include "header/AVL.h"
+#include "ControlParques.h"
+#include "Arbol.h"
+#include "Especie.h"
+#include "AVL.h"
 
 using namespace std;
 
