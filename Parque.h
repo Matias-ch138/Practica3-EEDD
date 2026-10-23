@@ -5,6 +5,7 @@
 #include <string>
 #include "Especie.h"
 #include "VDinamico.h"
+#include "Arbol.h"
 using namespace std;
 
 
@@ -12,7 +13,7 @@ class Parque {
 private:
     int cod_parque;
     string nbre_parque;
-    VDinamico<Especie*> contains_;
+    VDinamico<Arbol*> contains_;
 public:
     Parque();
     Parque(int cod, string nombre);
@@ -23,12 +24,17 @@ public:
 
     string get_nbre_parque() const;
     void set_nbre_parque(string nombre);
-    VDinamico<Especie> get_especies() const;
-    const VDinamico<Especie*>& get_contains() const;
+    VDinamico<Arbol> get_arboles() const;
+    const VDinamico<Arbol*>& get_contains() const;
 
-    void insertarEspecie(Especie &esp);
+    void insertarArboles(Arbol &Arbol);
     bool existeNbreCom(string ncomun);
     bool existeNbreCie(string ncient);
+
+    void insertarArbol(Arbol* arbol);   
+    Arbol arbolMasAlto();
+    int contarEspecies();
+    int contarTipos();
 };
 
 #endif

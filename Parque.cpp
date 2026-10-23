@@ -65,7 +65,7 @@ VDinamico<Especie> Parque::get_especies() const {
  * 
  * @return VDinamico<Especie> especies obtenidas de un parque
  */
-const VDinamico<Especie*>& Parque::get_contains()const{
+const VDinamico<Arbol*>& Parque::get_contains()const{
     return contains_;
 }
 /**
