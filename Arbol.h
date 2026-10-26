@@ -17,8 +17,8 @@ class Arbol{
     double Y_;
     float perimetro_;
     float altura_;
-
     Especie* especieAsociada_;
+    
     public:
     Arbol(string assetnum, int num_parque, int num_distrito, int num_barrio, double X, double Y, 
     float perimetro, float altura);

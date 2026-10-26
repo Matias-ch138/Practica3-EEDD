@@ -13,18 +13,17 @@ using namespace std;
 
 class ControlParques {
 private:
-    VDinamico<Especie> varieties;
-    ListaDEnlazada<Parque> parks;
+    VDinamico<Especie*> varieties;
+    ListaDEnlazada<Parque*> parks;
+    AVL<Arbol*> trees;
 
 public:
     ControlParques();
     ControlParques(const string& rutaEspecies, const string& rutaParques);
 
-    void asignarEspecieParque(Especie &e, Parque &p);
     int contarEspecieParque(string ncomun);
     VDinamico<Especie> listadoEspecieSubNbre(string cadena);
     Parque* buscarParque(const string& nbre_parque);
-    bool eliminarParque(string nombre);
 
     VDinamico<Especie>& get_varieties();
     const VDinamico<Especie>& get_varieties() const;

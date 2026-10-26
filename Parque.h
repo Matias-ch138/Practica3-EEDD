@@ -8,8 +8,8 @@
 #include "Arbol.h"
 using namespace std;
 
-
-class Parque {
+//TODO: Revisar metodos realmente necesarios
+class Parque { 
 private:
     int cod_parque;
     string nbre_parque;
@@ -24,15 +24,13 @@ public:
 
     string get_nbre_parque() const;
     void set_nbre_parque(string nombre);
-    VDinamico<Arbol> get_arboles() const;
     const VDinamico<Arbol*>& get_contains() const;
 
-    void insertarArboles(Arbol &Arbol);
     bool existeNbreCom(string ncomun);
-    bool existeNbreCie(string ncient);
+
 
     void insertarArbol(Arbol* arbol);   
-    Arbol arbolMasAlto();
+    Arbol* arbolMasAlto();
     int contarEspecies();
     int contarTipos();
 };

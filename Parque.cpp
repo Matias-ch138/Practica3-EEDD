@@ -48,34 +48,17 @@ string Parque::get_nbre_parque() const {
 void Parque::set_nbre_parque(string nombre) {
     nbre_parque = nombre;
 }
+
+
 /**
- * @brief Especies de un parque
+ * @brief arboles de un parque
  * 
- * @return VDinamico<Especie> especies obtenidas de un parque
- */
-VDinamico<Especie> Parque::get_especies() const {
-    VDinamico<Especie> especies;
-    for (unsigned int i = 0; i < contains_.gettLogico(); ++i) {
-        especies.insertar(*contains_[i]);
-    }
-    return especies;
-}
-/**
- * @brief Especies de un parque
- * 
- * @return VDinamico<Especie> especies obtenidas de un parque
+ * @return VDinamico<Arbol*> arboles obtenidas de un parque
  */
 const VDinamico<Arbol*>& Parque::get_contains()const{
     return contains_;
 }
-/**
- * @brief inserta una especie en un parque
- * 
- * @param esp especie que vamos a insertar
- */
-void Parque::insertarEspecie(Especie &esp){
-    contains_.insertar(&esp);
-}
+
 /**
  * @brief existe un nombre comun
  * 
@@ -85,24 +68,58 @@ void Parque::insertarEspecie(Especie &esp){
  */
 bool Parque::existeNbreCom(string ncomun) {
     for (unsigned int i = 0; i < contains_.gettLogico(); ++i) {
-        if (contains_[i]->getnombre_comun() == ncomun) {
+        if (contains_[i]->getNbreComun() == ncomun) {
             return true;
         }
     }
     return false;
 }
-/**
- * @brief existe un nombre cient
- * 
- * @param ncient el nombre cient
- * @return true si existe
- * @return false si no existe
- */
-bool Parque::existeNbreCie(string ncient) {
-    for (unsigned int i = 0; i < contains_.gettLogico(); ++i) {
-        if (contains_[i]->getnombre_cientifico() == ncient) {
-            return true;
+
+void Parque::insertarArbol(Arbol *arbol){
+    contains_.insertar(arbol);
+}
+
+Arbol* Parque::arbolMasAlto(){
+    Arbol *amayor;
+    for(unsigned int i=0;i<contains_.gettLogico();i++){
+        if(contains_[i]->get_altura()>amayor->get_altura()){
+            amayor=contains_[i];
         }
     }
-    return false;
+    return amayor;
+}
+int Parque::contarEspecies(){
+    VDinamico<string> especiesUnicas;
+    for (unsigned int i = 0; i < contains_.gettLogico(); ++i){
+        string cod = contains_[i]->getCodEspecie();
+        bool existe = false;
+        for (unsigned int j = 0; j < especiesUnicas.gettLogico(); ++j){
+            if (especiesUnicas[j] == cod){
+                existe = true;
+                break;
+            }
+        }
+        if (!existe&&!cod.empty()){
+            especiesUnicas.insertar(cod);
+
+        }
+    }
+    return especiesUnicas.gettLogico();
+}
+int Parque::contarTipos(){
+    VDinamico<string> tiposUnicos;
+    for(unsigned int i=0;i<contains_.gettLogico();i++){
+        string tiposunicos= contains_[i]->getTipoEspecie();
+        bool existe=false;
+        for(unsigned int j=0;j<contains_.gettLogico();j++){
+            if(tiposUnicos[j]==tiposunicos){
+                existe=true;
+                break;
+            }
+        }
+        if(!existe&&!tiposunicos.empty()){
+            tiposUnicos.insertar(tiposunicos);
+        }
+    }
+    return tiposUnicos.gettLogico();
 }
