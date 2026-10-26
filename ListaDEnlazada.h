@@ -81,7 +81,7 @@ public:
  * @brief constructor de iterador para la lista apuntando a la cabecera
  * 
  * @return Iterador<T> el iterador apuntando a la cabecera
- */
+ */C/C++: Reset IntelliSense Database
     Iterador<T> iterador() { return Iterador<T>(cabecera_); }
     /**
  * @brief constructor de iterador para la lista apuntando a la cabecera
