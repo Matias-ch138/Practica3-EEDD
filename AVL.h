@@ -13,8 +13,7 @@ public:
 template <typename T> class AVL {
 private:
   NodoAVL<T> *raiz;
-  int num_elementos; // Me cago en dios y los AVL que vuelvan los tiempos en los
-                     // que los negros se podian comprar por un euro
+  unsigned int num_elementos;
   NodoAVL<T> *CopiaPreorden(NodoAVL<T> *p) {
     if (p == nullptr) {
       return nullptr;
@@ -57,9 +56,87 @@ private:
       inorden(p->der, v);
     }
   }
+  void rotDer(NodoAVL<T> *&nodo) {
+    NodoAVL<T> *q = nodo, *l;
+    nodo= l= q->izq;
+    q->izq = l->der;
+    l->der= q;
+    q->bal--;
+    if(l->bal > 0){
+        q->bal -= l->bal;
+    }
+    l->bal--;
+    if(q->bal < 0){
+        l->bal -= -q->bal;
+    }
+  }
+  void rotIzq(NodoAVL<T> *&nodo) {
+    NodoAVL<T> *q = nodo, *r;
+    nodo= r= q->der;
+    q->der= r->izq;
+    r->izq= q;
+    q->bal++;
+    if(r->bal < 0){
+        q->bal += -r->bal;
+    }
+    r->bal++;
+    if(q->bal>0){
+        r->bal +=q->bal;
+    }
+  }
 
+    NodoAVL<T>* buscaRec(NodoAVL<T>* p, T& dato) const {
+        if (p == nullptr) return nullptr;
+        if (dato < p->dato) return buscaRec(p->izq, dato);
+        if (p->dato < dato) return buscaRec(p->der, dato);
+        return p; // Encontrado
+    }
+    int inserta(NodoAVL<T>* &raiz, T& dato ){
+            if (raiz == nullptr) {
+      raiz = new NodoAVL<T>(dato);
+      return true;
+    }
+    if (raiz->dato < dato) {
+      raiz->izq->dato = dato;
+    } else {
+      raiz->der->dato = dato;
+    }
+    }
+int inserta(NodoAVL<T>* &c, T& dato) {
+        int deltaH = 0;
+        if (c == nullptr) {
+            c = new NodoAVL<T>(dato);
+            num_elementos++;
+            return 1;
+        }
+
+        if (dato < c->dato) {
+            deltaH = inserta(c->izq, dato);
+            if (deltaH != 0) {
+                c->bal -= deltaH;
+                if (c->bal == -2) {
+                    if (c->izq->bal == 1) rotIzq(c->izq);
+                    rotDer(c);
+                    return 0;
+                }
+                return (c->bal != 0) ? 1 : 0;
+            }
+        } else if (c->dato < dato) {
+            deltaH = inserta(c->der, dato);
+            if (deltaH != 0) {
+                c->bal += deltaH;
+                if (c->bal == 2) {
+                    if (c->der->bal == -1) rotDer(c->der);
+                    rotIzq(c);
+                    return 0;
+                }
+                return (c->bal != 0) ? 1 : 0;
+            }
+        }
+        return 0; // Si la clave es duplicada no hace nada
+    }
 public:
-  AVL<T>();
+  AVL<T>(): raiz(0){}
 
   AVL(const AVL<T> &orig) : raiz(nullptr), num_elementos(orig.num_elementos) {
     raiz = CopiaPreorden(orig.raiz);
@@ -77,27 +154,33 @@ public:
     }
     return *this;
   }
-  void rotDer(Nodo<T> *&nodo) {
-  }
-  rotIzq(Nodo<T> *&nodo) {
-  }
+  
   bool inserta(T &dato) {
-    if (raiz == nullptr) {
-      raiz = new NodoAVL<T>(dato);
-      return true;
-    }
-    if (raiz->dato < dato) {
-      raiz->izq->dato = dato;
-    } else {
-      raiz->der->dato = dato;
-    }
+    return inserta(raiz,dato);
   }
   T *buscaRec(T &dato) {
+    NodoAVL<T> *n =buscaRec(raiz, dato);
+    if (n != nullptr) {
+      return &(n->dato);
+    } else {
+      return nullptr;
+    }
   }
   T *buscaIt(T &dato) {
+    NodoAVL<T> *n = raiz;
+    while (n != nullptr) {
+      if (dato == n->dato) {
+        return &(n->dato);
+      } else if (dato < n->dato) {
+        n = n->izq;
+      } else {
+        n = n->der;
+      }
+    }
+    return nullptr;
   }
-  VDinamico<T *> recorreInorden() {
-    VDinamico<T *> v;
+  VDinamico<T*> recorreInorden() {
+    VDinamico<T*> v;
     inorden(raiz, v);
     return v;
   }
@@ -105,6 +188,7 @@ public:
     return numElementos;
   }
   unsigned int altura() {
+    return calcularAltura(raiz);
   }
 };
 
