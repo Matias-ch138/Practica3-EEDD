@@ -55,6 +55,7 @@ public:
     string getCodEspecie() const;
     string getTipoEspecie() const;
     string getNbreComun() const;
+    string getNbreCientifico() const;
 
     // --- OPERADORES ---
     bool operator<(const Arbol& otro) const;

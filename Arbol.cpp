@@ -74,7 +74,10 @@ string Arbol::getNbreComun() const {
     if (especieAsociada_ == nullptr) return "";
     return especieAsociada_->getnombre_comun();
 }
-
+string Arbol::getNbreCientifico() const {
+    if (especieAsociada_ == nullptr) return "";
+    return especieAsociada_->getnombre_cientifico();
+}
 // --- OPERADORES ---
 bool Arbol::operator<(const Arbol &otro) const {
     return assetnum_ < otro.assetnum_;
