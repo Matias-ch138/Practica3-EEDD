@@ -7,10 +7,10 @@ public:
   U dato;
   char bal;
 
-  NodoAVL(const U &ele) : izq(nullptr), der(nullptr), bal(0), dato(ele) {
-  }
+  NodoAVL(const U &ele) : izq(nullptr), der(nullptr), bal(0), dato(ele) {}
 };
-template <typename T> class AVL {
+template <typename T> 
+class AVL {
 private:
   NodoAVL<T> *raiz;
   unsigned int num_elementos;
@@ -94,17 +94,6 @@ private:
       return buscaRec(p->der, dato);
     return p; // Encontrado
   }
-  int inserta(NodoAVL<T> *&raiz, T &dato) {
-    if (raiz == nullptr) {
-      raiz = new NodoAVL<T>(dato);
-      return true;
-    }
-    if (raiz->dato < dato) {
-      raiz->izq->dato = dato;
-    } else {
-      raiz->der->dato = dato;
-    }
-  }
   int inserta(NodoAVL<T> *&c, T &dato) {
     int deltaH = 0;
     if (c == nullptr) {
@@ -118,44 +107,55 @@ private:
       if (deltaH != 0) {
         c->bal -= deltaH;
         if (c->bal == -2) {
-          if (c->izq->bal == 1)
+          if (c->izq->bal == 1){
             rotIzq(c->izq);
+          }
           rotDer(c);
           return 0;
         }
-        return (c->bal != 0) ? 1 : 0;
+        if(c->bal!=0){
+          return 1;
+        }else{
+          return 0;
+        }
       }
     } else if (c->dato < dato) {
       deltaH = inserta(c->der, dato);
       if (deltaH != 0) {
         c->bal += deltaH;
         if (c->bal == 2) {
-          if (c->der->bal == -1)
+          if (c->der->bal == -1){
             rotDer(c->der);
+          }
           rotIzq(c);
           return 0;
         }
-        return (c->bal != 0) ? 1 : 0;
+        if(c->bal!=0){
+          return 1;
+        }else{
+          return 0;
+        }
       }
     }
-    return 0; // Si la clave es duplicada no hace nada
+    return 0; 
   }
 
 public:
-  AVL<T>() : raiz(0) {
+  AVL() : raiz(nullptr), num_elementos(0) {
   }
 
   AVL(const AVL<T> &orig) : raiz(nullptr), num_elementos(orig.num_elementos) {
     raiz = CopiaPreorden(orig.raiz);
   }
-  ~AVL<T>() {
+  ~AVL() {
     destruyeArbol(raiz);
     raiz = nullptr;
     num_elementos = 0;
   }
 
-  AVL<T> operator=(const AVL<T> &origen) {
+  AVL<T>& operator=(const AVL<T> &origen) {
     if (this != &origen) {
+      destruyeArbol(raiz);
       num_elementos = origen.num_elementos;
       raiz = CopiaPreorden(origen.raiz);
     }
@@ -163,6 +163,9 @@ public:
   }
 
   bool inserta(T &dato) {
+    unsigned int tamAntes = num_elementos;
+        inserta(raiz, dato);
+        return num_elementos > tamAntes;
     return inserta(raiz, dato);
   }
   T *buscaRec(T &dato) {
@@ -186,15 +189,15 @@ public:
     }
     return nullptr;
   }
-  VDinamico<T *> recorreInorden() {
+  VDinamico<T *> recorreInorden() const {
     VDinamico<T *> v;
     inorden(raiz, v);
     return v;
   }
-  unsigned int numElementos() {
-    return numElementos;
+  unsigned int numElementos() const{
+    return num_elementos;
   }
-  unsigned int altura() {
+  unsigned int altura() const{
     return calcularAltura(raiz);
   }
 };

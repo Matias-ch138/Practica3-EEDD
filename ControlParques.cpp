@@ -48,7 +48,7 @@ ControlParques::ControlParques(){
  * @param rutaEspecies ruta del archivo donde se guardan las Especies
  * @param rutaParques ruta del archivo donde se guardan los Parques
  */
-ControlParques::ControlParques(const string& rutaEspecies, const string& rutaParques){
+ControlParques::ControlParques(const string& rutaEspecies, const string& rutaParques, const string& rutaArboles){
     LectorCSV lector;
     lector.cargar(varieties, rutaEspecies);
     varieties.ordenar();
@@ -78,15 +78,7 @@ ControlParques::ControlParques(const string& rutaEspecies, const string& rutaPar
         cerr << "Error: No se pudo abrir el archivo de parques: " << rutaParques << endl;
     }
 }
-/**
- * @brief asigna una especie a un parque
- * 
- * @param e la especia a asignar
- * @param p el parque al que se le va a asignar la especie
- */
-void ControlParques::asignarEspecieParque(Especie &e, Parque &p){
-    p.insertarEspecie(e);
-}
+
 /**
  * @brief numero de especies con @param ncomun en un parque
  * 
@@ -135,24 +127,7 @@ Parque* ControlParques::buscarParque(const string& nbre_parque){
     }
     return nullptr;
 }
-/**
- * @brief elimina un parque cuyo nombre es @param nombre
- * 
- * @param nombre del parque a eliminar
- * @return true si se ha eliminado
- * @return false si no se ha eliminado
- */
-bool ControlParques::eliminarParque(string nombre) {
-    Iterador<Parque> it = parks.iteradorInicio();
-    while (!it.fin()){
-        if(it.getdato().get_nbre_parque()== nombre){
-            parks.borra(it);
-            return true;
-        }
-        it.avanza();
-    }
-    return false;
-}
+
 /**
  * @brief construye un vector dinamico con todas las variedades de especies de todos los parques
  * 
@@ -200,4 +175,62 @@ ListaDEnlazada<Parque>& ControlParques::get_nbre_parque(){
  */
 const ListaDEnlazada<Parque>& ControlParques::get_nbre_parque() const{
     return parks;
+}
+
+Arbol* ControlParques::buscarArbol(string asNum){
+    Arbol aux;
+    aux.set_assetnum(asNum);
+    return trees.buscaRec(aux);
+}
+VDinamico<Arbol*> ControlParques::listaArbParque(string nbre_parque){
+    Parque* parque = buscarParque(nbre_parque);
+    if (parque != nullptr) {
+        return parque->get_contains();
+    }
+    return VDinamico<Arbol*>();
+}
+Arbol* ControlParques::arbolMasAlto(){
+    Arbol* arbolMasAlto=nullptr;
+    Iterador<Parque> it = parks.iteradorInicio();
+    while(!it.fin()){
+        Arbol* mayorParque=it.getdato().arbolMasAlto();
+        if(mayorParque != nullptr){
+            if(arbolMasAlto==nullptr || mayorParque->get_altura()>arbolMasAlto->get_altura()){
+                arbolMasAlto=mayorParque;
+            }
+        }
+        it.avanza();
+    }
+    return arbolMasAlto;
+}
+int ControlParques::contarEspecies(string nbre_parque){
+    Parque* parque =buscarParque(nbre_parque);
+    if(parque!=nullptr){
+        return parque->contarEspecies();
+    }
+    return 0;
+}
+int ControlParques::contarTipos(){
+    Iterador<Parque> it = parks.iteradorInicio();
+    VDinamico<string> tiposUnicos;
+    while(!it.fin()){
+        const VDinamico<Arbol*> &arboles= it.getdato().get_contains();
+        for (int i = 0; i < arboles.gettLogico(); i++){
+            string tipo = arboles[i]->getTipoEspecie();
+            bool existe = false;
+            for (int j = 0; j < tiposUnicos.gettLogico(); j++){
+                if(tiposUnicos[j]==tipo){
+                    existe=true;
+                    break;
+                }
+            }
+            if(!existe){
+                tiposUnicos.insertar(tipo);
+            }
+            
+        }
+        
+        it.avanza();
+    }
+    return tiposUnicos.gettLogico();
 }

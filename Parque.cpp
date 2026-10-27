@@ -80,7 +80,10 @@ void Parque::insertarArbol(Arbol *arbol){
 }
 
 Arbol* Parque::arbolMasAlto(){
-    Arbol *amayor;
+    if (contains_.gettLogico() == 0) {
+        return nullptr;
+    }
+    Arbol *amayor= contains_[0];
     for(unsigned int i=0;i<contains_.gettLogico();i++){
         if(contains_[i]->get_altura()>amayor->get_altura()){
             amayor=contains_[i];
@@ -111,7 +114,7 @@ int Parque::contarTipos(){
     for(unsigned int i=0;i<contains_.gettLogico();i++){
         string tiposunicos= contains_[i]->getTipoEspecie();
         bool existe=false;
-        for(unsigned int j=0;j<contains_.gettLogico();j++){
+        for(unsigned int j=0;j<tiposUnicos.gettLogico();j++){
             if(tiposUnicos[j]==tiposunicos){
                 existe=true;
                 break;

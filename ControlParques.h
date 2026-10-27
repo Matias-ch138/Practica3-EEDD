@@ -10,20 +10,27 @@ using namespace std;
 #include "VDinamico.h"
 #include "ListaDEnlazada.h"
 #include "Iterador.h"
+#include "AVL.h"
 
 class ControlParques {
 private:
-    VDinamico<Especie*> varieties;
-    ListaDEnlazada<Parque*> parks;
-    AVL<Arbol*> trees;
+    VDinamico<Especie> varieties;
+    ListaDEnlazada<Parque> parks;
+    AVL<Arbol> trees;
 
 public:
     ControlParques();
-    ControlParques(const string& rutaEspecies, const string& rutaParques);
+    ControlParques(const string& rutaEspecies, const string& rutaParques, const string& rutaArboles);
 
     int contarEspecieParque(string ncomun);
     VDinamico<Especie> listadoEspecieSubNbre(string cadena);
     Parque* buscarParque(const string& nbre_parque);
+
+    Arbol* buscarArbol(string asNum);
+    VDinamico<Arbol*> listaArbParque(string nbre_parque);
+    Arbol* arbolMasAlto();
+    int contarEspecies(string nbre_parque);
+    int contarTipos();
 
     VDinamico<Especie>& get_varieties();
     const VDinamico<Especie>& get_varieties() const;

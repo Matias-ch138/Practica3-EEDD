@@ -1,0 +1,3 @@
+/home/matirex33/Documentos/GitHub/Practica3-EEDD/build/CMakeFiles/Practica3-EEDD.dir
+/home/matirex33/Documentos/GitHub/Practica3-EEDD/build/CMakeFiles/edit_cache.dir
+/home/matirex33/Documentos/GitHub/Practica3-EEDD/build/CMakeFiles/rebuild_cache.dir
