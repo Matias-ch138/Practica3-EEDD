@@ -56,6 +56,21 @@ private:
       inorden(p->der, v);
     }
   }
+  void recorreRango(NodoAVL<T> *p, const T &minimo, const T &maximo,
+                    VDinamico<T *> &resultado) const {
+    if (p == nullptr) {
+      return;
+    }
+    if (minimo < p->dato) {
+      recorreRango(p->izq, minimo, maximo, resultado);
+    }
+    if (!(p->dato < minimo) && !(maximo < p->dato)) {
+      resultado.insertar(&(p->dato));
+    }
+    if (p->dato < maximo) {
+      recorreRango(p->der, minimo, maximo, resultado);
+    }
+  }
   void rotDer(NodoAVL<T> *&nodo) {
     NodoAVL<T> *q = nodo, *l;
     nodo = l = q->izq;
@@ -105,9 +120,9 @@ private:
     if (dato < c->dato) {
       deltaH = inserta(c->izq, dato);
       if (deltaH != 0) {
-        c->bal -= deltaH;
-        if (c->bal == -2) {
-          if (c->izq->bal == 1){
+        c->bal += deltaH;
+        if (c->bal == 2) {
+          if (c->izq->bal == -1){
             rotIzq(c->izq);
           }
           rotDer(c);
@@ -122,9 +137,9 @@ private:
     } else if (c->dato < dato) {
       deltaH = inserta(c->der, dato);
       if (deltaH != 0) {
-        c->bal += deltaH;
-        if (c->bal == 2) {
-          if (c->der->bal == -1){
+        c->bal -= deltaH;
+        if (c->bal == -2) {
+          if (c->der->bal == 1){
             rotDer(c->der);
           }
           rotIzq(c);
@@ -193,6 +208,11 @@ public:
     VDinamico<T *> v;
     inorden(raiz, v);
     return v;
+  }
+  VDinamico<T *> recorreRango(const T &minimo, const T &maximo) const {
+    VDinamico<T *> resultado;
+    recorreRango(raiz, minimo, maximo, resultado);
+    return resultado;
   }
   unsigned int numElementos() const{
     return num_elementos;

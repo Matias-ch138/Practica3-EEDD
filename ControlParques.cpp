@@ -4,10 +4,11 @@
 #include <cstdlib>
 #include <sstream>
 #include <stdexcept>
+#include <algorithm>
 #include "ControlParques.h"
 #include "LectorCSV.h"
 using namespace std;
-static bool leerCampoCSV(const string& linea, size_t& posicion, string& campo) {
+static bool leerCampoCSV(const string& linea, size_t& posicion, string& campo, char separador = ',') {
     campo.clear();
     bool entreComillas = posicion < linea.size() && linea[posicion] == '"';
     if (entreComillas) {
@@ -24,7 +25,7 @@ static bool leerCampoCSV(const string& linea, size_t& posicion, string& campo) {
                 entreComillas = false;
                 ++posicion;
             }
-        } else if (!entreComillas && caracter == ',') {
+        } else if (!entreComillas && caracter == separador) {
             ++posicion;
             return true;
         } else {
@@ -34,6 +35,57 @@ static bool leerCampoCSV(const string& linea, size_t& posicion, string& campo) {
     }
 
     return !entreComillas;
+}
+
+static bool leerRegistroArbol(const string& linea, string campos[], size_t numeroCampos) {
+    size_t posicion = 0;
+    for (size_t i = 0; i < numeroCampos; ++i) {
+        if (!leerCampoCSV(linea, posicion, campos[i], ';')) {
+            return false;
+        }
+        if (i + 1 < numeroCampos && posicion == linea.size()) {
+            return false;
+        }
+    }
+    return posicion == linea.size();
+}
+
+static float leerMedidaCSV(const string& campo) {
+    if (campo.empty()) {
+        return 0.0f;
+    }
+    string normalizado = campo;
+    replace(normalizado.begin(), normalizado.end(), ',', '.');
+    return stof(normalizado);
+}
+
+static Especie* buscarEspecie(VDinamico<Especie>& especies, const string& codigo) {
+    int inicio = 0;
+    int fin = static_cast<int>(especies.gettLogico()) - 1;
+    while (inicio <= fin) {
+        int medio = inicio + (fin - inicio) / 2;
+        const string& codigoMedio = especies[medio].get_codigo_especie();
+        if (codigoMedio == codigo) {
+            return &especies[medio];
+        }
+        if (codigoMedio < codigo) {
+            inicio = medio + 1;
+        } else {
+            fin = medio - 1;
+        }
+    }
+    return nullptr;
+}
+
+static Parque* buscarParquePorCodigo(ListaDEnlazada<Parque>& parques, int codigo) {
+    Iterador<Parque> it = parques.iteradorInicio();
+    while (!it.fin()) {
+        if (it.getdato().get_cod_parque() == codigo) {
+            return &it.getdato();
+        }
+        it.avanza();
+    }
+    return nullptr;
 }
 /**
  * @brief Constructor por defecto de ControlParques
@@ -76,6 +128,51 @@ ControlParques::ControlParques(const string& rutaEspecies, const string& rutaPar
         fichero.close();
     } else {
         cerr << "Error: No se pudo abrir el archivo de parques: " << rutaParques << endl;
+    }
+
+    ifstream ficheroArboles(rutaArboles);
+    if (!ficheroArboles.is_open()) {
+        cerr << "Error: No se pudo abrir el archivo de arboles: " << rutaArboles << endl;
+        return;
+    }
+
+    string lineaArbol;
+    getline(ficheroArboles, lineaArbol);
+    while (getline(ficheroArboles, lineaArbol)) {
+        if (!lineaArbol.empty() && lineaArbol.back() == '\r') {
+            lineaArbol.pop_back();
+        }
+        if (lineaArbol.empty()) {
+            continue;
+        }
+
+        string campos[12];
+        if (!leerRegistroArbol(lineaArbol, campos, 12) || campos[0].empty()) {
+            continue;
+        }
+
+        try {
+            string x = campos[6];
+            string y = campos[7];
+            replace(x.begin(), x.end(), ',', '.');
+            replace(y.begin(), y.end(), ',', '.');
+            Arbol arbol(campos[0], stoi(campos[1]), stoi(campos[2]), campos[3],
+                        stoi(campos[4]), campos[5], stod(x), stod(y),
+                        leerMedidaCSV(campos[10]), leerMedidaCSV(campos[11]));
+            arbol.setEspecie(buscarEspecie(varieties, campos[8]));
+
+            if (!trees.inserta(arbol)) {
+                continue;
+            }
+
+            Arbol* arbolAlmacenado = trees.buscaRec(arbol);
+            Parque* parque = buscarParquePorCodigo(parks, arbol.get_num_parque());
+            if (parque != nullptr) {
+                parque->insertarArbol(arbolAlmacenado);
+            }
+        } catch (const exception&) {
+            continue;
+        }
     }
 }
 
@@ -182,6 +279,16 @@ Arbol* ControlParques::buscarArbol(string asNum){
     aux.set_assetnum(asNum);
     return trees.buscaRec(aux);
 }
+VDinamico<Arbol*> ControlParques::buscarArbolesRango(const string& asNumMin, const string& asNumMax){
+    if (asNumMax < asNumMin) {
+        throw invalid_argument("El limite inferior supera al limite superior");
+    }
+    Arbol minimo;
+    Arbol maximo;
+    minimo.set_assetnum(asNumMin);
+    maximo.set_assetnum(asNumMax);
+    return trees.recorreRango(minimo, maximo);
+}
 VDinamico<Arbol*> ControlParques::listaArbParque(string nbre_parque){
     Parque* parque = buscarParque(nbre_parque);
     if (parque != nullptr) {
@@ -217,6 +324,9 @@ int ControlParques::contarTipos(){
         const VDinamico<Arbol*> &arboles= it.getdato().get_contains();
         for (int i = 0; i < arboles.gettLogico(); i++){
             string tipo = arboles[i]->getTipoEspecie();
+            if (tipo.empty()) {
+                continue;
+            }
             bool existe = false;
             for (int j = 0; j < tiposUnicos.gettLogico(); j++){
                 if(tiposUnicos[j]==tipo){

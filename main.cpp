@@ -151,7 +151,8 @@ int main()
 
         for (unsigned int i = 0; i < numeroBusquedas; ++i)
         {
-            Arbol clave(identificadores[i]);
+            Arbol clave;
+            clave.set_assetnum(identificadores[i]);
             claves.insertar(clave);
         }
 
@@ -244,9 +245,9 @@ int main()
                   << "-------------------\n\n";
 
         ControlParques control(
-            "arbolado-especies.csv",
-            "parques.csv",
-            "arboladoMadrid.csv");
+            "./data/arbolado-especies.csv",
+            "./data/parques.csv",
+            "./data/arboladoMadrid.csv");
 
         std::cout << "\nEJERCICIO 5: BUSQUEDA DE ARBOLES\n";
         std::cout << "-------------------------------\n";

@@ -27,6 +27,7 @@ public:
     Parque* buscarParque(const string& nbre_parque);
 
     Arbol* buscarArbol(string asNum);
+    VDinamico<Arbol*> buscarArbolesRango(const string& asNumMin, const string& asNumMax);
     VDinamico<Arbol*> listaArbParque(string nbre_parque);
     Arbol* arbolMasAlto();
     int contarEspecies(string nbre_parque);
