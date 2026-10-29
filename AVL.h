@@ -6,7 +6,11 @@ public:
   NodoAVL<U> *izq, *der;
   U dato;
   char bal;
-
+  /**
+   * @brief Constructor de un NodoALV
+   * 
+   * @param ele es el elemento que hay dentro del nodo
+   */
   NodoAVL(const U &ele) : izq(nullptr), der(nullptr), bal(0), dato(ele) {}
 };
 template <typename T> 
@@ -14,6 +18,12 @@ class AVL {
 private:
   NodoAVL<T> *raiz;
   unsigned int num_elementos;
+  /**
+   * @brief método auxiliar para la copia de un arbol en preorden con métodos recursivos
+   * 
+   * @param p puntero a la raiz del arbol
+   * @return NodoAVL<T>* puntero al nodo que va a ser copiado
+   */
   NodoAVL<T> *CopiaPreorden(NodoAVL<T> *p) {
     if (p == nullptr) {
       return nullptr;
@@ -26,6 +36,11 @@ private:
 
     return nuevo;
   }
+  /**
+   * @brief método auxiliar para la destrucción de un arbol en postorden con métodos recursivos
+   * 
+   * @param p puntero a la raiz de un arbol
+   */
   void destruyeArbol(NodoAVL<T> *p) {
     if (p != nullptr) {
       destruyeArbol(p->izq);
@@ -33,6 +48,12 @@ private:
       delete p;
     }
   }
+  /**
+   * @brief método auxiliar para el calculo de la altura del arbol por recursividad
+   * 
+   * @param p puntero a la raiz del arbol
+   * @return unsigned int altura del arbol
+   */
   unsigned int calcularAltura(NodoAVL<T> *p) const {
 
     if (p == nullptr)
@@ -49,13 +70,27 @@ private:
     }
     return 1 + alturaMayor;
   }
-  void inorden(NodoAVL<T> *p, VDinamico<T *> &v) const {
+  /**
+   * @brief método auxiliar recursivo para guardar los elementos de un arbol en inorden en un VDinamico
+   * 
+   * @param p puntero a la raiz del arbol
+   * @param v vector dinamico en el que se van a guardar los elementos del arbol
+   */
+  void inorden(NodoAVL<T> *p, VDinamico<T*> &v) const {
     if (p != nullptr) {
       inorden(p->izq, v);
       v.insertar(&(p->dato));
       inorden(p->der, v);
     }
   }
+  /**
+   * @brief método auxiliar recursivo para recorrer un rango en el arbol guardando ese rango en un VDinamico
+   * 
+   * @param p puntero a la raiz del arbol 
+   * @param minimo el minimo del rango
+   * @param maximo el máximo del rango
+   * @param resultado el VDinamico con los datos guardados entre el @param minimo y @param maximo del arbol
+   */
   void recorreRango(NodoAVL<T> *p, const T &minimo, const T &maximo,
                     VDinamico<T *> &resultado) const {
     if (p == nullptr) {
@@ -71,6 +106,11 @@ private:
       recorreRango(p->der, minimo, maximo, resultado);
     }
   }
+  /**
+   * @brief Rotación hacia la derecha de un nodo para equilibrar el arbol
+   * 
+   * @param nodo nodo que queremos que se rote
+   */
   void rotDer(NodoAVL<T> *&nodo) {
     NodoAVL<T> *q = nodo, *l;
     nodo = l = q->izq;
@@ -85,6 +125,11 @@ private:
       l->bal -= -q->bal;
     }
   }
+  /**
+   * @brief Rotación hacia la izquierda de un nodo para equilibrar el arbol
+   * 
+   * @param nodo nodo que queremos que se rote
+   */
   void rotIzq(NodoAVL<T> *&nodo) {
     NodoAVL<T> *q = nodo, *r;
     nodo = r = q->der;
@@ -99,7 +144,13 @@ private:
       r->bal += q->bal;
     }
   }
-
+  /**
+   * @brief método auxiliar para la busqueda recursiva en el arbol
+   * 
+   * @param p la raiz del arbol
+   * @param dato el dato a buscar en el arbol
+   * @return NodoAVL<T>* el puntero al nodo que contiene ese dato
+   */
   NodoAVL<T> *buscaRec(NodoAVL<T> *p, T &dato) const {
     if (p == nullptr)
       return nullptr;
@@ -109,6 +160,13 @@ private:
       return buscaRec(p->der, dato);
     return p; // Encontrado
   }
+  /**
+   * @brief método auxiliar recursivo para insertar un dato en el arbol
+   * 
+   * @param c puntero a la referencia de la raiz del arbol
+   * @param dato el dato que queremos insertar en el arbol
+   * @return 1 si se ha insertado 0 si ya estaba insertado de antes
+   */
   int inserta(NodoAVL<T> *&c, T &dato) {
     int deltaH = 0;
     if (c == nullptr) {
@@ -156,18 +214,35 @@ private:
   }
 
 public:
+  /**
+   * @brief Constructor por defecto de un arbolAVL
+   * 
+   */
   AVL() : raiz(nullptr), num_elementos(0) {
   }
-
+  /**
+   * @brief Constructor por copia de un arbolAVL
+   * 
+   * @param orig el arbol cuyos datos queremos inicializar en un nuevo arbol
+   */
   AVL(const AVL<T> &orig) : raiz(nullptr), num_elementos(orig.num_elementos) {
     raiz = CopiaPreorden(orig.raiz);
   }
+  /**
+   * @brief Destructor del arbolAVL
+   * 
+   */
   ~AVL() {
     destruyeArbol(raiz);
     raiz = nullptr;
     num_elementos = 0;
   }
-
+  /**
+   * @brief Operador de asignación del arbolAVL
+   * 
+   * @param origen el arbol cuyos datos queremos asignar a otro arbol
+   * @return AVL<T>& el arbol al que le hemos asignado los datos de @param origen
+   */
   AVL<T>& operator=(const AVL<T> &origen) {
     if (this != &origen) {
       destruyeArbol(raiz);
@@ -176,13 +251,25 @@ public:
     }
     return *this;
   }
-
+  /**
+   * @brief método recursivo para insertar un nuevo elemento en el arbolAVL
+   * 
+   * @param dato dato que vamos a insertar
+   * @return true si se ha insertado correctamente
+   * @return false si ese dato ya estaba insertado antes
+   */
   bool inserta(T &dato) {
     unsigned int tamAntes = num_elementos;
         inserta(raiz, dato);
         return num_elementos > tamAntes;
     return inserta(raiz, dato);
   }
+  /**
+   * @brief Método de busqueda recursiva
+   * 
+   * @param dato dato que queremos buscar
+   * @return T* el puntero al dato encontrado
+   */
   T *buscaRec(T &dato) {
     NodoAVL<T> *n = buscaRec(raiz, dato);
     if (n != nullptr) {
@@ -191,6 +278,12 @@ public:
       return nullptr;
     }
   }
+  /**
+   * @brief Método de busqueda iterativa
+   * 
+   * @param dato dato que queremos buscar
+   * @return T* el puntero al dato encontrado
+   */
   T *buscaIt(T &dato) {
     NodoAVL<T> *n = raiz;
     while (n != nullptr) {
@@ -204,19 +297,41 @@ public:
     }
     return nullptr;
   }
-  VDinamico<T *> recorreInorden() const {
+  /**
+   * @brief Guadado de todos los elementos del arbolAVL en inorden en un VDinamico 
+   * 
+   * @return VDinamico<T*> el vector dinamico con los elementos del arbolAVL en inorden
+   */
+  VDinamico<T*> recorreInorden() const {
     VDinamico<T *> v;
     inorden(raiz, v);
     return v;
   }
-  VDinamico<T *> recorreRango(const T &minimo, const T &maximo) const {
-    VDinamico<T *> resultado;
+  /**
+   * @brief Guardado de todos los elementos en cierto rango de un arbolAVL en un VDinamico
+   * 
+   * @param minimo el minimo del rango
+   * @param maximo el maximo del rango
+   * @return VDinamico<T *> el vector dinamico con los elementos del arbolAVl entre @param minimo y @param maximo
+   */
+  VDinamico<T*> recorreRango(const T &minimo, const T &maximo) const {
+    VDinamico<T*> resultado;
     recorreRango(raiz, minimo, maximo, resultado);
     return resultado;
   }
+  /**
+   * @brief Devuelve el numero de elementos que hay en el arbolAVL
+   * 
+   * @return unsigned int el numero de elementos
+   */
   unsigned int numElementos() const{
     return num_elementos;
   }
+  /**
+   * @brief Calculo de la altura del arbol
+   * 
+   * @return unsigned int altura del arbol
+   */
   unsigned int altura() const{
     return calcularAltura(raiz);
   }

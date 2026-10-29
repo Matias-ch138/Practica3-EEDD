@@ -1,0 +1,225 @@
+\doxysection{AVL.\+h}
+\hypertarget{_a_v_l_8h_source}{}\label{_a_v_l_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AVL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AVL\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}VDinamico.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ U>\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_nodo_a_v_l_ac10ee15473ab39a54f5af723f7dbf62d}{NodoAVL}}\ \{}
+\DoxyCodeLine{00005\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00006\ \ \ \doxymbox{\hyperlink{class_nodo_a_v_l_ac10ee15473ab39a54f5af723f7dbf62d}{NodoAVL<U>}}\ *izq,\ *der;}
+\DoxyCodeLine{00007\ \ \ U\ dato;}
+\DoxyCodeLine{00008\ \ \ \textcolor{keywordtype}{char}\ bal;}
+\DoxyCodeLine{00014\ \ \ \doxymbox{\hyperlink{class_nodo_a_v_l_ac10ee15473ab39a54f5af723f7dbf62d}{NodoAVL}}(\textcolor{keyword}{const}\ U\ \&ele)\ :\ izq(nullptr),\ der(nullptr),\ bal(0),\ dato(ele)\ \{\}}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_a_v_l_aa5d8d7a3a8edfc399277cd29b10795ea}{AVL}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *raiz;}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num\_elementos;}
+\DoxyCodeLine{00027\ \ \ \doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *CopiaPreorden(\doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *p)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (p\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *nuevo\ =\ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}(p-\/>dato);}
+\DoxyCodeLine{00033\ \ \ \ \ nuevo-\/>bal\ =\ p-\/>bal;}
+\DoxyCodeLine{00034\ \ \ \ \ nuevo-\/>izq\ =\ CopiaPreorden(p-\/>izq);}
+\DoxyCodeLine{00035\ \ \ \ \ nuevo-\/>der\ =\ CopiaPreorden(p-\/>der);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{return}\ nuevo;}
+\DoxyCodeLine{00038\ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{void}\ destruyeArbol(\doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *p)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (p\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ destruyeArbol(p-\/>izq);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ destruyeArbol(p-\/>der);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \textcolor{keyword}{delete}\ p;}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ calcularAltura(\doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *p)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (p\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ altIzq\ =\ calcularAltura(p-\/>izq);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ altDer\ =\ calcularAltura(p-\/>der);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ alturaMayor;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (altIzq\ >\ altDer)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ alturaMayor\ =\ altIzq;}
+\DoxyCodeLine{00068\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ alturaMayor\ =\ altDer;}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{return}\ 1\ +\ alturaMayor;}
+\DoxyCodeLine{00072\ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{void}\ inorden(\doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *p,\ \doxymbox{\hyperlink{class_v_dinamico}{VDinamico<T*>}}\ \&v)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{if}\ (p\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ inorden(p-\/>izq,\ v);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ v.\doxymbox{\hyperlink{class_v_dinamico_a439606ef0ea9abd0ab7836931f50c502}{insertar}}(\&(p-\/>dato));}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ inorden(p-\/>der,\ v);}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{void}\ recorreRango(\doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *p,\ \textcolor{keyword}{const}\ T\ \&minimo,\ \textcolor{keyword}{const}\ T\ \&maximo,}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_v_dinamico}{VDinamico<T\ *>}}\ \&resultado)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{if}\ (p\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{if}\ (minimo\ <\ p-\/>dato)\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ recorreRango(p-\/>izq,\ minimo,\ maximo,\ resultado);}
+\DoxyCodeLine{00101\ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(p-\/>dato\ <\ minimo)\ \&\&\ !(maximo\ <\ p-\/>dato))\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ resultado.\doxymbox{\hyperlink{class_v_dinamico_a439606ef0ea9abd0ab7836931f50c502}{insertar}}(\&(p-\/>dato));}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{if}\ (p-\/>dato\ <\ maximo)\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ recorreRango(p-\/>der,\ minimo,\ maximo,\ resultado);}
+\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordtype}{void}\ rotDer(\doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *\&nodo)\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *q\ =\ nodo,\ *l;}
+\DoxyCodeLine{00116\ \ \ \ \ nodo\ =\ l\ =\ q-\/>izq;}
+\DoxyCodeLine{00117\ \ \ \ \ q-\/>izq\ =\ l-\/>der;}
+\DoxyCodeLine{00118\ \ \ \ \ l-\/>der\ =\ q;}
+\DoxyCodeLine{00119\ \ \ \ \ q-\/>bal-\/-\/;}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordflow}{if}\ (l-\/>bal\ >\ 0)\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ q-\/>bal\ -\/=\ l-\/>bal;}
+\DoxyCodeLine{00122\ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \ \ \ \ l-\/>bal-\/-\/;}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{if}\ (q-\/>bal\ <\ 0)\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ l-\/>bal\ -\/=\ -\/q-\/>bal;}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \textcolor{keywordtype}{void}\ rotIzq(\doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *\&nodo)\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *q\ =\ nodo,\ *r;}
+\DoxyCodeLine{00135\ \ \ \ \ nodo\ =\ r\ =\ q-\/>der;}
+\DoxyCodeLine{00136\ \ \ \ \ q-\/>der\ =\ r-\/>izq;}
+\DoxyCodeLine{00137\ \ \ \ \ r-\/>izq\ =\ q;}
+\DoxyCodeLine{00138\ \ \ \ \ q-\/>bal++;}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>bal\ <\ 0)\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ q-\/>bal\ +=\ -\/r-\/>bal;}
+\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \ \ \ \ r-\/>bal++;}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordflow}{if}\ (q-\/>bal\ >\ 0)\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ r-\/>bal\ +=\ q-\/>bal;}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \}}
+\DoxyCodeLine{00154\ \ \ \doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *buscaRec(\doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *p,\ T\ \&dato)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordflow}{if}\ (p\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordflow}{if}\ (dato\ <\ p-\/>dato)}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buscaRec(p-\/>izq,\ dato);}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordflow}{if}\ (p-\/>dato\ <\ dato)}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buscaRec(p-\/>der,\ dato);}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordflow}{return}\ p;\ \textcolor{comment}{//\ Encontrado}}
+\DoxyCodeLine{00162\ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \textcolor{keywordtype}{int}\ inserta(\doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *\&c,\ T\ \&dato)\ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{int}\ deltaH\ =\ 0;}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ c\ =\ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}(dato);}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ num\_elementos++;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00176\ \ \ \ \ \}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{if}\ (dato\ <\ c-\/>dato)\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ deltaH\ =\ inserta(c-\/>izq,\ dato);}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (deltaH\ !=\ 0)\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ c-\/>bal\ +=\ deltaH;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c-\/>bal\ ==\ 2)\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c-\/>izq-\/>bal\ ==\ -\/1)\{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ rotIzq(c-\/>izq);}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ rotDer(c);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(c-\/>bal!=0)\{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (c-\/>dato\ <\ dato)\ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ deltaH\ =\ inserta(c-\/>der,\ dato);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (deltaH\ !=\ 0)\ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ c-\/>bal\ -\/=\ deltaH;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c-\/>bal\ ==\ -\/2)\ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c-\/>der-\/>bal\ ==\ 1)\{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ rotDer(c-\/>der);}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ rotIzq(c);}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(c-\/>bal!=0)\{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00212\ \ \ \ \ \}}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ }
+\DoxyCodeLine{00214\ \ \ \}}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00221\ \ \ \doxymbox{\hyperlink{class_a_v_l_aa5d8d7a3a8edfc399277cd29b10795ea}{AVL}}()\ :\ raiz(nullptr),\ num\_elementos(0)\ \{}
+\DoxyCodeLine{00222\ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \doxymbox{\hyperlink{class_a_v_l_af00aeb86ef54bafe30df71d1462f3653}{AVL}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_a_v_l_aa5d8d7a3a8edfc399277cd29b10795ea}{AVL<T>}}\ \&orig)\ :\ raiz(nullptr),\ num\_elementos(orig.num\_elementos)\ \{}
+\DoxyCodeLine{00229\ \ \ \ \ raiz\ =\ CopiaPreorden(orig.raiz);}
+\DoxyCodeLine{00230\ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \doxymbox{\hyperlink{class_a_v_l_a07d2694a7bb1f26f9990f01acf29c5af}{\string~AVL}}()\ \{}
+\DoxyCodeLine{00236\ \ \ \ \ destruyeArbol(raiz);}
+\DoxyCodeLine{00237\ \ \ \ \ raiz\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00238\ \ \ \ \ num\_elementos\ =\ 0;}
+\DoxyCodeLine{00239\ \ \ \}}
+\DoxyCodeLine{00246\ \ \ \doxymbox{\hyperlink{class_a_v_l_aa5d8d7a3a8edfc399277cd29b10795ea}{AVL<T>}}\&\ \doxymbox{\hyperlink{class_a_v_l_a41b4d078063a6d0af564e152ecd2a576}{operator=}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_a_v_l_aa5d8d7a3a8edfc399277cd29b10795ea}{AVL<T>}}\ \&origen)\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&origen)\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ destruyeArbol(raiz);}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ num\_elementos\ =\ origen.num\_elementos;}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ raiz\ =\ CopiaPreorden(origen.raiz);}
+\DoxyCodeLine{00251\ \ \ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00253\ \ \ \}}
+\DoxyCodeLine{00261\ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_a_v_l_a80c02de0bcdf18389b4184bf8e725d92}{inserta}}(T\ \&dato)\ \{}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ tamAntes\ =\ num\_elementos;}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ inserta(raiz,\ dato);}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ num\_elementos\ >\ tamAntes;}
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keywordflow}{return}\ inserta(raiz,\ dato);}
+\DoxyCodeLine{00266\ \ \ \}}
+\DoxyCodeLine{00273\ \ \ T\ *\doxymbox{\hyperlink{class_a_v_l_a79cdc49d47e4860199a0670d314a27fe}{buscaRec}}(T\ \&dato)\ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *n\ =\ buscaRec(raiz,\ dato);}
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&(n-\/>dato);}
+\DoxyCodeLine{00277\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00279\ \ \ \ \ \}}
+\DoxyCodeLine{00280\ \ \ \}}
+\DoxyCodeLine{00287\ \ \ T\ *\doxymbox{\hyperlink{class_a_v_l_a9fcf5b42123aaa2bf1229c8b00b7b106}{buscaIt}}(T\ \&dato)\ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \doxymbox{\hyperlink{class_nodo_a_v_l}{NodoAVL<T>}}\ *n\ =\ raiz;}
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{keywordflow}{while}\ (n\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dato\ ==\ n-\/>dato)\ \{}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&(n-\/>dato);}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dato\ <\ n-\/>dato)\ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ n\ =\ n-\/>izq;}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ n\ =\ n-\/>der;}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00297\ \ \ \ \ \}}
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00299\ \ \ \}}
+\DoxyCodeLine{00305\ \ \ \doxymbox{\hyperlink{class_v_dinamico}{VDinamico<T*>}}\ \doxymbox{\hyperlink{class_a_v_l_a540a30a45831dce587cec120b3672898}{recorreInorden}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00306\ \ \ \ \ \doxymbox{\hyperlink{class_v_dinamico}{VDinamico<T\ *>}}\ v;}
+\DoxyCodeLine{00307\ \ \ \ \ inorden(raiz,\ v);}
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{00309\ \ \ \}}
+\DoxyCodeLine{00317\ \ \ \doxymbox{\hyperlink{class_v_dinamico}{VDinamico<T*>}}\ \doxymbox{\hyperlink{class_a_v_l_a682c1b2691b253453b4fb555b8d3d51e}{recorreRango}}(\textcolor{keyword}{const}\ T\ \&minimo,\ \textcolor{keyword}{const}\ T\ \&maximo)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00318\ \ \ \ \ \doxymbox{\hyperlink{class_v_dinamico}{VDinamico<T*>}}\ resultado;}
+\DoxyCodeLine{00319\ \ \ \ \ recorreRango(raiz,\ minimo,\ maximo,\ resultado);}
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keywordflow}{return}\ resultado;}
+\DoxyCodeLine{00321\ \ \ \}}
+\DoxyCodeLine{00327\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_a_v_l_a5105e8c12dc7e4b3b396df3eb0d2f87e}{numElementos}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00328\ \ \ \ \ \textcolor{keywordflow}{return}\ num\_elementos;}
+\DoxyCodeLine{00329\ \ \ \}}
+\DoxyCodeLine{00335\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_a_v_l_a4fc26f310bb8eb1086d3e66f7532c91a}{altura}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keywordflow}{return}\ calcularAltura(raiz);}
+\DoxyCodeLine{00337\ \ \ \}}
+\DoxyCodeLine{00338\ \};}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -74,11 +74,19 @@ bool Parque::existeNbreCom(string ncomun) {
     }
     return false;
 }
-
+/**
+ * @brief Inserta un arbol en un parque
+ * 
+ * @param arbol arbol que queremos insertar
+ */
 void Parque::insertarArbol(Arbol *arbol){
     contains_.insertar(arbol);
 }
-
+/**
+ * @brief obtener el arbol mas alto del parque
+ * 
+ * @return Arbol* puntero al arbol mas alto del parque
+ */
 Arbol* Parque::arbolMasAlto(){
     if (contains_.gettLogico() == 0) {
         return nullptr;
@@ -91,6 +99,11 @@ Arbol* Parque::arbolMasAlto(){
     }
     return amayor;
 }
+/**
+ * @brief Cuenta las especies únicas de un parque
+ * 
+ * @return int número de especies únicas del parque
+ */
 int Parque::contarEspecies(){
     VDinamico<string> especiesUnicas;
     for (unsigned int i = 0; i < contains_.gettLogico(); ++i){
@@ -109,6 +122,11 @@ int Parque::contarEspecies(){
     }
     return especiesUnicas.gettLogico();
 }
+/**
+ * @brief cuenta los tipos únicos de un parque
+ * 
+ * @return int número de tipo únicos de un parque
+ */
 int Parque::contarTipos(){
     VDinamico<string> tiposUnicos;
     for(unsigned int i=0;i<contains_.gettLogico();i++){

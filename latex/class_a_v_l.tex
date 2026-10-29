@@ -1,0 +1,213 @@
+\doxysection{AVL\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_a_v_l}{}\label{class_a_v_l}\index{AVL$<$ T $>$@{AVL$<$ T $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_a_v_l_aa5d8d7a3a8edfc399277cd29b10795ea}\label{class_a_v_l_aa5d8d7a3a8edfc399277cd29b10795ea} 
+{\bfseries AVL} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto de un arbol\+AVL. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_a_v_l_af00aeb86ef54bafe30df71d1462f3653}{AVL}} (const \doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$ \&orig)
+\begin{DoxyCompactList}\small\item\em Constructor por copia de un arbol\+AVL. \end{DoxyCompactList}\item 
+\Hypertarget{class_a_v_l_a07d2694a7bb1f26f9990f01acf29c5af}\label{class_a_v_l_a07d2694a7bb1f26f9990f01acf29c5af} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+AVL} ()
+\begin{DoxyCompactList}\small\item\em Destructor del arbol\+AVL. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$ \& \doxymbox{\hyperlink{class_a_v_l_a41b4d078063a6d0af564e152ecd2a576}{operator=}} (const \doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$ \&origen)
+\begin{DoxyCompactList}\small\item\em Operador de asignación del arbol\+AVL. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_a_v_l_a80c02de0bcdf18389b4184bf8e725d92}{inserta}} (T \&dato)
+\begin{DoxyCompactList}\small\item\em método recursivo para insertar un nuevo elemento en el arbol\+AVL \end{DoxyCompactList}\item 
+T \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_a_v_l_a79cdc49d47e4860199a0670d314a27fe}{busca\+Rec}} (T \&dato)
+\begin{DoxyCompactList}\small\item\em Método de busqueda recursiva. \end{DoxyCompactList}\item 
+T \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_a_v_l_a9fcf5b42123aaa2bf1229c8b00b7b106}{busca\+It}} (T \&dato)
+\begin{DoxyCompactList}\small\item\em Método de busqueda iterativa. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_v_dinamico}{VDinamico}}$<$ T \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{class_a_v_l_a540a30a45831dce587cec120b3672898}{recorre\+Inorden}} () const
+\begin{DoxyCompactList}\small\item\em Guadado de todos los elementos del arbol\+AVL en inorden en un \doxylink{class_v_dinamico}{VDinamico}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_v_dinamico}{VDinamico}}$<$ T \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{class_a_v_l_a682c1b2691b253453b4fb555b8d3d51e}{recorre\+Rango}} (const T \&minimo, const T \&maximo) const
+\begin{DoxyCompactList}\small\item\em Guardado de todos los elementos en cierto rango de un arbol\+AVL en un \doxylink{class_v_dinamico}{VDinamico}. \end{DoxyCompactList}\item 
+unsigned int \doxymbox{\hyperlink{class_a_v_l_a5105e8c12dc7e4b3b396df3eb0d2f87e}{num\+Elementos}} () const
+\begin{DoxyCompactList}\small\item\em Devuelve el numero de elementos que hay en el arbol\+AVL. \end{DoxyCompactList}\item 
+unsigned int \doxymbox{\hyperlink{class_a_v_l_a4fc26f310bb8eb1086d3e66f7532c91a}{altura}} () const
+\begin{DoxyCompactList}\small\item\em Calculo de la altura del arbol. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_a_v_l_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_a_v_l_af00aeb86ef54bafe30df71d1462f3653}\index{AVL$<$ T $>$@{AVL$<$ T $>$}!AVL@{AVL}}
+\index{AVL@{AVL}!AVL$<$ T $>$@{AVL$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AVL()}{AVL()}}
+{\footnotesize\ttfamily \label{class_a_v_l_af00aeb86ef54bafe30df71d1462f3653} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$::\+\+AVL (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$ \&}]{orig}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor por copia de un arbol\+AVL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em orig} & el arbol cuyos datos queremos inicializar en un nuevo arbol \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_a_v_l_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_a_v_l_a4fc26f310bb8eb1086d3e66f7532c91a}\index{AVL$<$ T $>$@{AVL$<$ T $>$}!altura@{altura}}
+\index{altura@{altura}!AVL$<$ T $>$@{AVL$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{altura()}{altura()}}
+{\footnotesize\ttfamily \label{class_a_v_l_a4fc26f310bb8eb1086d3e66f7532c91a} 
+template$<$typename T$>$ \\
+unsigned int \doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$::\+altura (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculo de la altura del arbol. 
+
+\begin{DoxyReturn}{Returns}
+unsigned int altura del arbol 
+\end{DoxyReturn}
+\Hypertarget{class_a_v_l_a9fcf5b42123aaa2bf1229c8b00b7b106}\index{AVL$<$ T $>$@{AVL$<$ T $>$}!buscaIt@{buscaIt}}
+\index{buscaIt@{buscaIt}!AVL$<$ T $>$@{AVL$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{buscaIt()}{buscaIt()}}
+{\footnotesize\ttfamily \label{class_a_v_l_a9fcf5b42123aaa2bf1229c8b00b7b106} 
+template$<$typename T$>$ \\
+T \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$::\+busca\+It (\begin{DoxyParamCaption}\item[{T \&}]{dato}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Método de busqueda iterativa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & dato que queremos buscar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\texorpdfstring{$\ast$}{*} el puntero al dato encontrado 
+\end{DoxyReturn}
+\Hypertarget{class_a_v_l_a79cdc49d47e4860199a0670d314a27fe}\index{AVL$<$ T $>$@{AVL$<$ T $>$}!buscaRec@{buscaRec}}
+\index{buscaRec@{buscaRec}!AVL$<$ T $>$@{AVL$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{buscaRec()}{buscaRec()}}
+{\footnotesize\ttfamily \label{class_a_v_l_a79cdc49d47e4860199a0670d314a27fe} 
+template$<$typename T$>$ \\
+T \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$::\+busca\+Rec (\begin{DoxyParamCaption}\item[{T \&}]{dato}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Método de busqueda recursiva. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & dato que queremos buscar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\texorpdfstring{$\ast$}{*} el puntero al dato encontrado 
+\end{DoxyReturn}
+\Hypertarget{class_a_v_l_a80c02de0bcdf18389b4184bf8e725d92}\index{AVL$<$ T $>$@{AVL$<$ T $>$}!inserta@{inserta}}
+\index{inserta@{inserta}!AVL$<$ T $>$@{AVL$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{inserta()}{inserta()}}
+{\footnotesize\ttfamily \label{class_a_v_l_a80c02de0bcdf18389b4184bf8e725d92} 
+template$<$typename T$>$ \\
+bool \doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$::\+inserta (\begin{DoxyParamCaption}\item[{T \&}]{dato}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+método recursivo para insertar un nuevo elemento en el arbol\+AVL 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & dato que vamos a insertar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si se ha insertado correctamente 
+
+false si ese dato ya estaba insertado antes 
+\end{DoxyReturn}
+\Hypertarget{class_a_v_l_a5105e8c12dc7e4b3b396df3eb0d2f87e}\index{AVL$<$ T $>$@{AVL$<$ T $>$}!numElementos@{numElementos}}
+\index{numElementos@{numElementos}!AVL$<$ T $>$@{AVL$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{numElementos()}{numElementos()}}
+{\footnotesize\ttfamily \label{class_a_v_l_a5105e8c12dc7e4b3b396df3eb0d2f87e} 
+template$<$typename T$>$ \\
+unsigned int \doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$::\+num\+Elementos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Devuelve el numero de elementos que hay en el arbol\+AVL. 
+
+\begin{DoxyReturn}{Returns}
+unsigned int el numero de elementos 
+\end{DoxyReturn}
+\Hypertarget{class_a_v_l_a41b4d078063a6d0af564e152ecd2a576}\index{AVL$<$ T $>$@{AVL$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!AVL$<$ T $>$@{AVL$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_a_v_l_a41b4d078063a6d0af564e152ecd2a576} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$ \& \doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$::\+operator= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$ \&}]{origen}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de asignación del arbol\+AVL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origen} & el arbol cuyos datos queremos asignar a otro arbol \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_a_v_l}{AVL$<$\+T$>$}\& el arbol al que le hemos asignado los datos de
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em origen} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_a_v_l_a540a30a45831dce587cec120b3672898}\index{AVL$<$ T $>$@{AVL$<$ T $>$}!recorreInorden@{recorreInorden}}
+\index{recorreInorden@{recorreInorden}!AVL$<$ T $>$@{AVL$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{recorreInorden()}{recorreInorden()}}
+{\footnotesize\ttfamily \label{class_a_v_l_a540a30a45831dce587cec120b3672898} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_v_dinamico}{VDinamico}}$<$ T \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$::\+recorre\+Inorden (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Guadado de todos los elementos del arbol\+AVL en inorden en un \doxylink{class_v_dinamico}{VDinamico}. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_v_dinamico}{VDinamico$<$\+T\texorpdfstring{$\ast$}{*}$>$} el vector dinamico con los elementos del arbol\+AVL en inorden 
+\end{DoxyReturn}
+\Hypertarget{class_a_v_l_a682c1b2691b253453b4fb555b8d3d51e}\index{AVL$<$ T $>$@{AVL$<$ T $>$}!recorreRango@{recorreRango}}
+\index{recorreRango@{recorreRango}!AVL$<$ T $>$@{AVL$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{recorreRango()}{recorreRango()}}
+{\footnotesize\ttfamily \label{class_a_v_l_a682c1b2691b253453b4fb555b8d3d51e} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_v_dinamico}{VDinamico}}$<$ T \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{class_a_v_l}{AVL}}$<$ T $>$::\+recorre\+Rango (\begin{DoxyParamCaption}\item[{const T \&}]{minimo}{, }\item[{const T \&}]{maximo}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Guardado de todos los elementos en cierto rango de un arbol\+AVL en un \doxylink{class_v_dinamico}{VDinamico}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em minimo} & el minimo del rango \\
+\hline
+{\em maximo} & el maximo del rango \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_v_dinamico}{VDinamico$<$\+T \texorpdfstring{$\ast$}{*}$>$} el vector dinamico con los elementos del arbol\+AVl entre
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em minimo} & y\\
+\hline
+{\em maximo} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+AVL.\+h\end{DoxyCompactItemize}
