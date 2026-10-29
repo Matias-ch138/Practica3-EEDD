@@ -148,13 +148,13 @@ void Arbol::set_num_barrio(int num_barrio) { num_barrio_ = num_barrio; }
  */
 void Arbol::set_nbre_barrio(const string& nbre_barrio) { nbre_barrio_ = nbre_barrio; }
 /**
- * @brief 
+ * @brief inicializa el atributo X
  * 
  * @param X 
  */
 void Arbol::set_X(double X) { X_ = X; }
 /**
- * @brief 
+ * @brief inicializa el atributo Y
  * 
  * @param Y 
  */
