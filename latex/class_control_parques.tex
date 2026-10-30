@@ -26,6 +26,10 @@ int \doxymbox{\hyperlink{class_control_parques_a1d013a26c8fbc69cae19ff082490c69d
 \begin{DoxyCompactList}\small\item\em Segun el nombre del parque cuenta las especies distintas que tiene. \end{DoxyCompactList}\item 
 int \doxymbox{\hyperlink{class_control_parques_a2b15ff83f74fb2674506ae926f052425}{contar\+Tipos}} ()
 \begin{DoxyCompactList}\small\item\em Cuenta todos los tipos de especies diferentes alojados en todos los parques. \end{DoxyCompactList}\item 
+unsigned int \doxymbox{\hyperlink{class_control_parques_af2a1719000770d27c23e34f1da189949}{num\+Arboles}} () const
+\begin{DoxyCompactList}\small\item\em Devuelve el número de árboles almacenados en el \doxylink{class_a_v_l}{AVL}. \end{DoxyCompactList}\item 
+unsigned int \doxymbox{\hyperlink{class_control_parques_a82507ab376906d1eb095337e177d21ae}{altura\+Arboles}} () const
+\begin{DoxyCompactList}\small\item\em Devuelve la altura del \doxylink{class_a_v_l}{AVL} que almacena los árboles. \end{DoxyCompactList}\item 
 \doxymbox{\hyperlink{class_v_dinamico}{VDinamico}}$<$ \doxymbox{\hyperlink{class_especie}{Especie}} $>$ \& \doxymbox{\hyperlink{class_control_parques_a947a8cc4f26aee533f66e6bc06e7cd72}{get\+\_\+varieties}} ()
 \begin{DoxyCompactList}\small\item\em obtener las especies de todos los parques \end{DoxyCompactList}\item 
 const \doxymbox{\hyperlink{class_v_dinamico}{VDinamico}}$<$ \doxymbox{\hyperlink{class_especie}{Especie}} $>$ \& \doxymbox{\hyperlink{class_control_parques_aa69b17927a1681447ee1f5e291220ba4}{get\+\_\+varieties}} () const
@@ -67,6 +71,19 @@ Constructor parametrizado de la clase \doxylink{class_control_parques}{Control\+
 \label{doc-func-members}
 \Hypertarget{class_control_parques_doc-func-members}
 \doxysubsection{Member Function Documentation}
+\Hypertarget{class_control_parques_a82507ab376906d1eb095337e177d21ae}\index{ControlParques@{ControlParques}!alturaArboles@{alturaArboles}}
+\index{alturaArboles@{alturaArboles}!ControlParques@{ControlParques}}
+\doxysubsubsection{\texorpdfstring{alturaArboles()}{alturaArboles()}}
+{\footnotesize\ttfamily \label{class_control_parques_a82507ab376906d1eb095337e177d21ae} 
+unsigned int Control\+Parques::\+altura\+Arboles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Devuelve la altura del \doxylink{class_a_v_l}{AVL} que almacena los árboles. 
+
+\begin{DoxyReturn}{Returns}
+unsigned int número de niveles del árbol, o 0 si está vacío. 
+\end{DoxyReturn}
 \Hypertarget{class_control_parques_a7c62f4b31857a1cb9ccd2377204abce5}\index{ControlParques@{ControlParques}!arbolMasAlto@{arbolMasAlto}}
 \index{arbolMasAlto@{arbolMasAlto}!ControlParques@{ControlParques}}
 \doxysubsubsection{\texorpdfstring{arbolMasAlto()}{arbolMasAlto()}}
@@ -331,6 +348,19 @@ Genera un \doxylink{class_v_dinamico}{VDinamico} de todas las especies con un su
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 \doxylink{class_v_dinamico}{VDinamico$<$\+Especie$>$} Vector de especies con ese subnombre 
+\end{DoxyReturn}
+\Hypertarget{class_control_parques_af2a1719000770d27c23e34f1da189949}\index{ControlParques@{ControlParques}!numArboles@{numArboles}}
+\index{numArboles@{numArboles}!ControlParques@{ControlParques}}
+\doxysubsubsection{\texorpdfstring{numArboles()}{numArboles()}}
+{\footnotesize\ttfamily \label{class_control_parques_af2a1719000770d27c23e34f1da189949} 
+unsigned int Control\+Parques::\+num\+Arboles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Devuelve el número de árboles almacenados en el \doxylink{class_a_v_l}{AVL}. 
+
+\begin{DoxyReturn}{Returns}
+unsigned int cantidad total de árboles cargados. 
 \end{DoxyReturn}
 
 

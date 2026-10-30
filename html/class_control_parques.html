@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: ControlParques Class Reference</title>
+<title>Practica3: ControlParques Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Practica3
    </div>
   </td>
  </tr>
@@ -117,6 +117,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1d013a26c8fbc69cae19ff082490c69d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Segun el nombre del parque cuenta las especies distintas que tiene.  <br /></td></tr>
 <tr class="memitem:a2b15ff83f74fb2674506ae926f052425" id="r_a2b15ff83f74fb2674506ae926f052425"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2b15ff83f74fb2674506ae926f052425">contarTipos</a> ()</td></tr>
 <tr class="memdesc:a2b15ff83f74fb2674506ae926f052425"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cuenta todos los tipos de especies diferentes alojados en todos los parques.  <br /></td></tr>
+<tr class="memitem:af2a1719000770d27c23e34f1da189949" id="r_af2a1719000770d27c23e34f1da189949"><td class="memItemLeft">unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#af2a1719000770d27c23e34f1da189949">numArboles</a> () const</td></tr>
+<tr class="memdesc:af2a1719000770d27c23e34f1da189949"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el número de árboles almacenados en el <a class="el" href="class_a_v_l.html">AVL</a>.  <br /></td></tr>
+<tr class="memitem:a82507ab376906d1eb095337e177d21ae" id="r_a82507ab376906d1eb095337e177d21ae"><td class="memItemLeft">unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#a82507ab376906d1eb095337e177d21ae">alturaArboles</a> () const</td></tr>
+<tr class="memdesc:a82507ab376906d1eb095337e177d21ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve la altura del <a class="el" href="class_a_v_l.html">AVL</a> que almacena los árboles.  <br /></td></tr>
 <tr class="memitem:a947a8cc4f26aee533f66e6bc06e7cd72" id="r_a947a8cc4f26aee533f66e6bc06e7cd72"><td class="memItemLeft"><a class="el" href="class_v_dinamico.html">VDinamico</a>&lt; <a class="el" href="class_especie.html">Especie</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a947a8cc4f26aee533f66e6bc06e7cd72">get_varieties</a> ()</td></tr>
 <tr class="memdesc:a947a8cc4f26aee533f66e6bc06e7cd72"><td class="mdescLeft">&#160;</td><td class="mdescRight">obtener las especies de todos los parques  <br /></td></tr>
 <tr class="memitem:aa69b17927a1681447ee1f5e291220ba4" id="r_aa69b17927a1681447ee1f5e291220ba4"><td class="memItemLeft">const <a class="el" href="class_v_dinamico.html">VDinamico</a>&lt; <a class="el" href="class_especie.html">Especie</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#aa69b17927a1681447ee1f5e291220ba4">get_varieties</a> () const</td></tr>
@@ -168,6 +172,26 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a82507ab376906d1eb095337e177d21ae" name="a82507ab376906d1eb095337e177d21ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82507ab376906d1eb095337e177d21ae">&#9670;&#160;</a></span>alturaArboles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int ControlParques::alturaArboles </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve la altura del <a class="el" href="class_a_v_l.html">AVL</a> que almacena los árboles. </p>
+<dl class="section return"><dt>Returns</dt><dd>unsigned int número de niveles del árbol, o 0 si está vacío. </dd></dl>
+
+</div>
+</div>
 <a id="a7c62f4b31857a1cb9ccd2377204abce5" name="a7c62f4b31857a1cb9ccd2377204abce5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c62f4b31857a1cb9ccd2377204abce5">&#9670;&#160;</a></span>arbolMasAlto()</h2>
 
@@ -546,6 +570,26 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_v_dinamico.html">VDinamico&lt;Especie&gt;</a> Vector de especies con ese subnombre </dd></dl>
+
+</div>
+</div>
+<a id="af2a1719000770d27c23e34f1da189949" name="af2a1719000770d27c23e34f1da189949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2a1719000770d27c23e34f1da189949">&#9670;&#160;</a></span>numArboles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int ControlParques::numArboles </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve el número de árboles almacenados en el <a class="el" href="class_a_v_l.html">AVL</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>unsigned int cantidad total de árboles cargados. </dd></dl>
 
 </div>
 </div>

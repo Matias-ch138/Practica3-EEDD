@@ -2,6 +2,7 @@ var class_control_parques =
 [
     [ "ControlParques", "class_control_parques.html#ac807c088f79a779c017cd23025680eec", null ],
     [ "ControlParques", "class_control_parques.html#a01f31450c408d9a369f23254239d2b7f", null ],
+    [ "alturaArboles", "class_control_parques.html#a82507ab376906d1eb095337e177d21ae", null ],
     [ "arbolMasAlto", "class_control_parques.html#a7c62f4b31857a1cb9ccd2377204abce5", null ],
     [ "buscarArbol", "class_control_parques.html#a8465eb0098c58e6b5bfb59448809051c", null ],
     [ "buscarArbolesRango", "class_control_parques.html#a216577ec0813a97a65741b1ae2eb8ad9", null ],
@@ -16,5 +17,6 @@ var class_control_parques =
     [ "get_varieties", "class_control_parques.html#a947a8cc4f26aee533f66e6bc06e7cd72", null ],
     [ "get_varieties", "class_control_parques.html#aa69b17927a1681447ee1f5e291220ba4", null ],
     [ "listaArbParque", "class_control_parques.html#a7f899ccd891c82d582de35b726568221", null ],
-    [ "listadoEspecieSubNbre", "class_control_parques.html#a7e7ee80adba7721a76a2191ba4048557", null ]
+    [ "listadoEspecieSubNbre", "class_control_parques.html#a7e7ee80adba7721a76a2191ba4048557", null ],
+    [ "numArboles", "class_control_parques.html#af2a1719000770d27c23e34f1da189949", null ]
 ];

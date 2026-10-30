@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: AVL.h Source File</title>
+<title>Practica3: AVL.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Practica3
    </div>
   </td>
  </tr>
@@ -100,7 +100,7 @@ $(function(){initNavTree('_a_v_l_8h_source.html','',''); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>  <a class="code hl_function" href="class_nodo_a_v_l.html#ac10ee15473ab39a54f5af723f7dbf62d">NodoAVL&lt;U&gt;</a> *izq, *der;</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>  U dato;</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>  <span class="keywordtype">char</span> bal;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_nodo_a_v_l.html#ac10ee15473ab39a54f5af723f7dbf62d">   14</a></span>  <a class="code hl_function" href="class_nodo_a_v_l.html#ac10ee15473ab39a54f5af723f7dbf62d">NodoAVL</a>(<span class="keyword">const</span> U &amp;ele) : izq(nullptr), der(nullptr), bal(0), dato(ele) {}</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_nodo_a_v_l.html#ac10ee15473ab39a54f5af723f7dbf62d">   14</a></span>  <a class="code hl_function" href="class_nodo_a_v_l.html#ac10ee15473ab39a54f5af723f7dbf62d">NodoAVL</a>(<span class="keyword">const</span> U &amp;ele) : izq(nullptr), der(nullptr), dato(ele), bal(0) {}</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>};</div>
 </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; </div>
@@ -283,79 +283,78 @@ $(function(){initNavTree('_a_v_l_8h_source.html','',''); });
 <div class="foldopen" id="foldopen00261" data-start="{" data-end="}">
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a80c02de0bcdf18389b4184bf8e725d92">  261</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="class_a_v_l.html#a80c02de0bcdf18389b4184bf8e725d92">inserta</a>(T &amp;dato) {</div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tamAntes = num_elementos;</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        inserta(raiz, dato);</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keywordflow">return</span> num_elementos &gt; tamAntes;</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    <span class="keywordflow">return</span> inserta(raiz, dato);</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>  }</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    inserta(raiz, dato);</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <span class="keywordflow">return</span> num_elementos &gt; tamAntes;</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>  }</div>
 </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span></div>
-<div class="foldopen" id="foldopen00273" data-start="{" data-end="}">
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a79cdc49d47e4860199a0670d314a27fe">  273</a></span>  T *<a class="code hl_function" href="class_a_v_l.html#a79cdc49d47e4860199a0670d314a27fe">buscaRec</a>(T &amp;dato) {</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    <a class="code hl_class" href="class_nodo_a_v_l.html">NodoAVL&lt;T&gt;</a> *n = buscaRec(raiz, dato);</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    <span class="keywordflow">if</span> (n != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>      <span class="keywordflow">return</span> &amp;(n-&gt;dato);</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>      <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    }</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>  }</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span></div>
+<div class="foldopen" id="foldopen00272" data-start="{" data-end="}">
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a79cdc49d47e4860199a0670d314a27fe">  272</a></span>  T *<a class="code hl_function" href="class_a_v_l.html#a79cdc49d47e4860199a0670d314a27fe">buscaRec</a>(T &amp;dato) {</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <a class="code hl_class" href="class_nodo_a_v_l.html">NodoAVL&lt;T&gt;</a> *n = buscaRec(raiz, dato);</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    <span class="keywordflow">if</span> (n != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>      <span class="keywordflow">return</span> &amp;(n-&gt;dato);</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>      <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    }</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>  }</div>
 </div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span></div>
-<div class="foldopen" id="foldopen00287" data-start="{" data-end="}">
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a9fcf5b42123aaa2bf1229c8b00b7b106">  287</a></span>  T *<a class="code hl_function" href="class_a_v_l.html#a9fcf5b42123aaa2bf1229c8b00b7b106">buscaIt</a>(T &amp;dato) {</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <a class="code hl_class" href="class_nodo_a_v_l.html">NodoAVL&lt;T&gt;</a> *n = raiz;</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keywordflow">while</span> (n != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>      <span class="keywordflow">if</span> (dato == n-&gt;dato) {</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        <span class="keywordflow">return</span> &amp;(n-&gt;dato);</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (dato &lt; n-&gt;dato) {</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        n = n-&gt;izq;</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        n = n-&gt;der;</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>      }</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    }</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>  }</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span></div>
+<div class="foldopen" id="foldopen00286" data-start="{" data-end="}">
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a9fcf5b42123aaa2bf1229c8b00b7b106">  286</a></span>  T *<a class="code hl_function" href="class_a_v_l.html#a9fcf5b42123aaa2bf1229c8b00b7b106">buscaIt</a>(T &amp;dato) {</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <a class="code hl_class" href="class_nodo_a_v_l.html">NodoAVL&lt;T&gt;</a> *n = raiz;</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <span class="keywordflow">while</span> (n != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>      <span class="keywordflow">if</span> (dato == n-&gt;dato) {</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        <span class="keywordflow">return</span> &amp;(n-&gt;dato);</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (dato &lt; n-&gt;dato) {</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        n = n-&gt;izq;</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        n = n-&gt;der;</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>      }</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    }</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>  }</div>
 </div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span></div>
-<div class="foldopen" id="foldopen00305" data-start="{" data-end="}">
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a540a30a45831dce587cec120b3672898">  305</a></span>  <a class="code hl_class" href="class_v_dinamico.html">VDinamico&lt;T*&gt;</a> <a class="code hl_function" href="class_a_v_l.html#a540a30a45831dce587cec120b3672898">recorreInorden</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    <a class="code hl_class" href="class_v_dinamico.html">VDinamico&lt;T *&gt;</a> v;</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    inorden(raiz, v);</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    <span class="keywordflow">return</span> v;</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>  }</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span></div>
+<div class="foldopen" id="foldopen00304" data-start="{" data-end="}">
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a540a30a45831dce587cec120b3672898">  304</a></span>  <a class="code hl_class" href="class_v_dinamico.html">VDinamico&lt;T*&gt;</a> <a class="code hl_function" href="class_a_v_l.html#a540a30a45831dce587cec120b3672898">recorreInorden</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <a class="code hl_class" href="class_v_dinamico.html">VDinamico&lt;T *&gt;</a> v;</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    inorden(raiz, v);</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <span class="keywordflow">return</span> v;</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>  }</div>
 </div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span></div>
-<div class="foldopen" id="foldopen00317" data-start="{" data-end="}">
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a682c1b2691b253453b4fb555b8d3d51e">  317</a></span>  <a class="code hl_class" href="class_v_dinamico.html">VDinamico&lt;T*&gt;</a> <a class="code hl_function" href="class_a_v_l.html#a682c1b2691b253453b4fb555b8d3d51e">recorreRango</a>(<span class="keyword">const</span> T &amp;minimo, <span class="keyword">const</span> T &amp;maximo)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <a class="code hl_class" href="class_v_dinamico.html">VDinamico&lt;T*&gt;</a> resultado;</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    recorreRango(raiz, minimo, maximo, resultado);</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    <span class="keywordflow">return</span> resultado;</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>  }</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span></div>
+<div class="foldopen" id="foldopen00316" data-start="{" data-end="}">
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a682c1b2691b253453b4fb555b8d3d51e">  316</a></span>  <a class="code hl_class" href="class_v_dinamico.html">VDinamico&lt;T*&gt;</a> <a class="code hl_function" href="class_a_v_l.html#a682c1b2691b253453b4fb555b8d3d51e">recorreRango</a>(<span class="keyword">const</span> T &amp;minimo, <span class="keyword">const</span> T &amp;maximo)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    <a class="code hl_class" href="class_v_dinamico.html">VDinamico&lt;T*&gt;</a> resultado;</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    recorreRango(raiz, minimo, maximo, resultado);</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    <span class="keywordflow">return</span> resultado;</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>  }</div>
 </div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span></div>
-<div class="foldopen" id="foldopen00327" data-start="{" data-end="}">
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a5105e8c12dc7e4b3b396df3eb0d2f87e">  327</a></span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_a_v_l.html#a5105e8c12dc7e4b3b396df3eb0d2f87e">numElementos</a>()<span class="keyword"> const</span>{</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    <span class="keywordflow">return</span> num_elementos;</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>  }</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span></div>
+<div class="foldopen" id="foldopen00326" data-start="{" data-end="}">
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a5105e8c12dc7e4b3b396df3eb0d2f87e">  326</a></span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_a_v_l.html#a5105e8c12dc7e4b3b396df3eb0d2f87e">numElementos</a>()<span class="keyword"> const</span>{</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    <span class="keywordflow">return</span> num_elementos;</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>  }</div>
 </div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span></div>
-<div class="foldopen" id="foldopen00335" data-start="{" data-end="}">
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a4fc26f310bb8eb1086d3e66f7532c91a">  335</a></span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_a_v_l.html#a4fc26f310bb8eb1086d3e66f7532c91a">altura</a>()<span class="keyword"> const</span>{</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    <span class="keywordflow">return</span> calcularAltura(raiz);</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>  }</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span></div>
+<div class="foldopen" id="foldopen00334" data-start="{" data-end="}">
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a4fc26f310bb8eb1086d3e66f7532c91a">  334</a></span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_a_v_l.html#a4fc26f310bb8eb1086d3e66f7532c91a">altura</a>()<span class="keyword"> const</span>{</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <span class="keywordflow">return</span> calcularAltura(raiz);</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>  }</div>
 </div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>};</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>};</div>
 </div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span> </div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_a_v_l_html_a07d2694a7bb1f26f9990f01acf29c5af"><div class="ttname"><a href="class_a_v_l.html#a07d2694a7bb1f26f9990f01acf29c5af">AVL::~AVL</a></div><div class="ttdeci">~AVL()</div><div class="ttdoc">Destructor del arbolAVL.</div><div class="ttdef"><b>Definition</b> AVL.h:235</div></div>
 <div class="ttc" id="aclass_a_v_l_html_a41b4d078063a6d0af564e152ecd2a576"><div class="ttname"><a href="class_a_v_l.html#a41b4d078063a6d0af564e152ecd2a576">AVL::operator=</a></div><div class="ttdeci">AVL&lt; T &gt; &amp; operator=(const AVL&lt; T &gt; &amp;origen)</div><div class="ttdoc">Operador de asignación del arbolAVL.</div><div class="ttdef"><b>Definition</b> AVL.h:246</div></div>
-<div class="ttc" id="aclass_a_v_l_html_a4fc26f310bb8eb1086d3e66f7532c91a"><div class="ttname"><a href="class_a_v_l.html#a4fc26f310bb8eb1086d3e66f7532c91a">AVL::altura</a></div><div class="ttdeci">unsigned int altura() const</div><div class="ttdoc">Calculo de la altura del arbol.</div><div class="ttdef"><b>Definition</b> AVL.h:335</div></div>
-<div class="ttc" id="aclass_a_v_l_html_a5105e8c12dc7e4b3b396df3eb0d2f87e"><div class="ttname"><a href="class_a_v_l.html#a5105e8c12dc7e4b3b396df3eb0d2f87e">AVL::numElementos</a></div><div class="ttdeci">unsigned int numElementos() const</div><div class="ttdoc">Devuelve el numero de elementos que hay en el arbolAVL.</div><div class="ttdef"><b>Definition</b> AVL.h:327</div></div>
-<div class="ttc" id="aclass_a_v_l_html_a540a30a45831dce587cec120b3672898"><div class="ttname"><a href="class_a_v_l.html#a540a30a45831dce587cec120b3672898">AVL::recorreInorden</a></div><div class="ttdeci">VDinamico&lt; T * &gt; recorreInorden() const</div><div class="ttdoc">Guadado de todos los elementos del arbolAVL en inorden en un VDinamico.</div><div class="ttdef"><b>Definition</b> AVL.h:305</div></div>
-<div class="ttc" id="aclass_a_v_l_html_a682c1b2691b253453b4fb555b8d3d51e"><div class="ttname"><a href="class_a_v_l.html#a682c1b2691b253453b4fb555b8d3d51e">AVL::recorreRango</a></div><div class="ttdeci">VDinamico&lt; T * &gt; recorreRango(const T &amp;minimo, const T &amp;maximo) const</div><div class="ttdoc">Guardado de todos los elementos en cierto rango de un arbolAVL en un VDinamico.</div><div class="ttdef"><b>Definition</b> AVL.h:317</div></div>
-<div class="ttc" id="aclass_a_v_l_html_a79cdc49d47e4860199a0670d314a27fe"><div class="ttname"><a href="class_a_v_l.html#a79cdc49d47e4860199a0670d314a27fe">AVL::buscaRec</a></div><div class="ttdeci">T * buscaRec(T &amp;dato)</div><div class="ttdoc">Método de busqueda recursiva.</div><div class="ttdef"><b>Definition</b> AVL.h:273</div></div>
+<div class="ttc" id="aclass_a_v_l_html_a4fc26f310bb8eb1086d3e66f7532c91a"><div class="ttname"><a href="class_a_v_l.html#a4fc26f310bb8eb1086d3e66f7532c91a">AVL::altura</a></div><div class="ttdeci">unsigned int altura() const</div><div class="ttdoc">Calculo de la altura del arbol.</div><div class="ttdef"><b>Definition</b> AVL.h:334</div></div>
+<div class="ttc" id="aclass_a_v_l_html_a5105e8c12dc7e4b3b396df3eb0d2f87e"><div class="ttname"><a href="class_a_v_l.html#a5105e8c12dc7e4b3b396df3eb0d2f87e">AVL::numElementos</a></div><div class="ttdeci">unsigned int numElementos() const</div><div class="ttdoc">Devuelve el numero de elementos que hay en el arbolAVL.</div><div class="ttdef"><b>Definition</b> AVL.h:326</div></div>
+<div class="ttc" id="aclass_a_v_l_html_a540a30a45831dce587cec120b3672898"><div class="ttname"><a href="class_a_v_l.html#a540a30a45831dce587cec120b3672898">AVL::recorreInorden</a></div><div class="ttdeci">VDinamico&lt; T * &gt; recorreInorden() const</div><div class="ttdoc">Guadado de todos los elementos del arbolAVL en inorden en un VDinamico.</div><div class="ttdef"><b>Definition</b> AVL.h:304</div></div>
+<div class="ttc" id="aclass_a_v_l_html_a682c1b2691b253453b4fb555b8d3d51e"><div class="ttname"><a href="class_a_v_l.html#a682c1b2691b253453b4fb555b8d3d51e">AVL::recorreRango</a></div><div class="ttdeci">VDinamico&lt; T * &gt; recorreRango(const T &amp;minimo, const T &amp;maximo) const</div><div class="ttdoc">Guardado de todos los elementos en cierto rango de un arbolAVL en un VDinamico.</div><div class="ttdef"><b>Definition</b> AVL.h:316</div></div>
+<div class="ttc" id="aclass_a_v_l_html_a79cdc49d47e4860199a0670d314a27fe"><div class="ttname"><a href="class_a_v_l.html#a79cdc49d47e4860199a0670d314a27fe">AVL::buscaRec</a></div><div class="ttdeci">T * buscaRec(T &amp;dato)</div><div class="ttdoc">Método de busqueda recursiva.</div><div class="ttdef"><b>Definition</b> AVL.h:272</div></div>
 <div class="ttc" id="aclass_a_v_l_html_a80c02de0bcdf18389b4184bf8e725d92"><div class="ttname"><a href="class_a_v_l.html#a80c02de0bcdf18389b4184bf8e725d92">AVL::inserta</a></div><div class="ttdeci">bool inserta(T &amp;dato)</div><div class="ttdoc">método recursivo para insertar un nuevo elemento en el arbolAVL</div><div class="ttdef"><b>Definition</b> AVL.h:261</div></div>
-<div class="ttc" id="aclass_a_v_l_html_a9fcf5b42123aaa2bf1229c8b00b7b106"><div class="ttname"><a href="class_a_v_l.html#a9fcf5b42123aaa2bf1229c8b00b7b106">AVL::buscaIt</a></div><div class="ttdeci">T * buscaIt(T &amp;dato)</div><div class="ttdoc">Método de busqueda iterativa.</div><div class="ttdef"><b>Definition</b> AVL.h:287</div></div>
+<div class="ttc" id="aclass_a_v_l_html_a9fcf5b42123aaa2bf1229c8b00b7b106"><div class="ttname"><a href="class_a_v_l.html#a9fcf5b42123aaa2bf1229c8b00b7b106">AVL::buscaIt</a></div><div class="ttdeci">T * buscaIt(T &amp;dato)</div><div class="ttdoc">Método de busqueda iterativa.</div><div class="ttdef"><b>Definition</b> AVL.h:286</div></div>
 <div class="ttc" id="aclass_a_v_l_html_aa5d8d7a3a8edfc399277cd29b10795ea"><div class="ttname"><a href="class_a_v_l.html#aa5d8d7a3a8edfc399277cd29b10795ea">AVL::AVL</a></div><div class="ttdeci">AVL()</div><div class="ttdoc">Constructor por defecto de un arbolAVL.</div><div class="ttdef"><b>Definition</b> AVL.h:221</div></div>
 <div class="ttc" id="aclass_a_v_l_html_af00aeb86ef54bafe30df71d1462f3653"><div class="ttname"><a href="class_a_v_l.html#af00aeb86ef54bafe30df71d1462f3653">AVL::AVL</a></div><div class="ttdeci">AVL(const AVL&lt; T &gt; &amp;orig)</div><div class="ttdoc">Constructor por copia de un arbolAVL.</div><div class="ttdef"><b>Definition</b> AVL.h:228</div></div>
 <div class="ttc" id="aclass_nodo_a_v_l_html"><div class="ttname"><a href="class_nodo_a_v_l.html">NodoAVL</a></div><div class="ttdef"><b>Definition</b> AVL.h:4</div></div>
