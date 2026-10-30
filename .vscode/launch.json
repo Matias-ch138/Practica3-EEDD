@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/matias/Documents/GitHub/Practica3-EEDD",
-      "program": "/Users/matias/Documents/GitHub/Practica3-EEDD/build/Debug/outDebug"
+      "cwd": "${workspaceFolder}",
+      "program": "${command:cmake.launchTargetPath}"
     }
   ]
 }
