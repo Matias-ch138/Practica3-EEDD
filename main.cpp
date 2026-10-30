@@ -261,6 +261,12 @@ int main()
             "./data/parques.csv",
             "./data/arboladoMadrid.csv");
 
+        std::cout << "\nEJERCICIO 4: DATOS CARGADOS\n";
+        std::cout << "Especies: " << control.get_varieties().gettLogico()
+                  << "\nParques: " << control.get_parks().tam()
+                  << "\nArboles: " << control.numArboles()
+                  << "\nAltura del AVL: " << control.alturaArboles() << '\n';
+
         std::cout << "\nEJERCICIO 5: BUSQUEDA DE ARBOLES\n";
         std::cout << "-------------------------------\n";
 
@@ -285,7 +291,6 @@ int main()
                       << "\nTipo de planta: " << arbol->getTipoEspecie()
                       << '\n';
         }
-
         std::cout << "\nEJERCICIO 6: ARBOLES DEL RETIRO\n";
         std::cout << "-------------------------------\n";
 
@@ -404,6 +409,7 @@ int main()
                 std::cout << nombre << ": "
                           << (existe ? "PRESENTE" : "AUSENTE")
                           << '\n';
+
             }
         }
 
@@ -417,7 +423,6 @@ int main()
         std::cout << "-------------------------------\n";
 
         Arbol *masAlto = control.arbolMasAlto();
-
         if (masAlto == nullptr)
         {
             std::cout << "No hay arboles con altura conocida.\n";

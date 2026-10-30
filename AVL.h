@@ -11,7 +11,7 @@ public:
    * 
    * @param ele es el elemento que hay dentro del nodo
    */
-  NodoAVL(const U &ele) : izq(nullptr), der(nullptr), bal(0), dato(ele) {}
+  NodoAVL(const U &ele) : izq(nullptr), der(nullptr), dato(ele), bal(0) {}
 };
 template <typename T> 
 class AVL {
@@ -260,9 +260,8 @@ public:
    */
   bool inserta(T &dato) {
     unsigned int tamAntes = num_elementos;
-        inserta(raiz, dato);
-        return num_elementos > tamAntes;
-    return inserta(raiz, dato);
+    inserta(raiz, dato);
+    return num_elementos > tamAntes;
   }
   /**
    * @brief Método de busqueda recursiva

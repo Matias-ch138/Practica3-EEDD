@@ -43,7 +43,7 @@ static bool leerRegistroArbol(const string& linea, string campos[], size_t numer
         if (!leerCampoCSV(linea, posicion, campos[i], ';')) {
             return false;
         }
-        if (i + 1 < numeroCampos && posicion == linea.size()) {
+        if (i + 2 < numeroCampos && posicion == linea.size()) {
             return false;
         }
     }
@@ -294,4 +294,12 @@ int ControlParques::contarTipos(){
         it.avanza();
     }
     return tiposUnicos.gettLogico();
+}
+
+unsigned int ControlParques::numArboles() const {
+    return trees.numElementos();
+}
+
+unsigned int ControlParques::alturaArboles() const {
+    return trees.altura();
 }

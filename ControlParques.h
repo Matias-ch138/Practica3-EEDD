@@ -96,6 +96,16 @@ public:
      */
     int contarTipos();
     /**
+     * @brief Devuelve el número de árboles almacenados en el AVL.
+     * @return unsigned int cantidad total de árboles cargados.
+     */
+    unsigned int numArboles() const;
+    /**
+     * @brief Devuelve la altura del AVL que almacena los árboles.
+     * @return unsigned int número de niveles del árbol, o 0 si está vacío.
+     */
+    unsigned int alturaArboles() const;
+    /**
      * @brief obtener las especies de todos los parques
      * 
      * @return VDinamico<Especie>& vector dinamico con todas las especies de todos los parques
